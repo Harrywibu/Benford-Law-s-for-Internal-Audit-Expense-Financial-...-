@@ -292,3 +292,4 @@ chi2_ftd, p_ftd = chisquare(f_obs=observed_ftd, f_exp=expected_ftd_scaled)
             else:
                 st.info("No suspicious transactions found for First Two Digit.")
 
+
