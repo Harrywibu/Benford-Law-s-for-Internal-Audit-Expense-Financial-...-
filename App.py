@@ -194,13 +194,13 @@ if min_val != max_val:
     value_range = st.slider("Filter suspicious value range", float(min_val), float(max_val), (float(min_val), float(max_val)), key="slider_fd")
     filtered_rows_fd = suspicious_rows_fd[(suspicious_rows_fd[selected_col] >= value_range[0]) & (suspicious_rows_fd[selected_col] <= value_range[1])]
     st.dataframe(filtered_rows_fd)
-        else:
+else:
     st.info("Suspicious value range is a single value. No slider needed.")
     st.dataframe(suspicious_rows_fd)
 
                 filtered_rows_fd = suspicious_rows_fd[(suspicious_rows_fd[selected_col] >= value_range[0]) & (suspicious_rows_fd[selected_col] <= value_range[1])]
                 st.dataframe(filtered_rows_fd)
-        else:
+else:
                 st.info("No suspicious transactions found for First Digit.")
                 
         # First Two Digit Column
@@ -297,4 +297,5 @@ if min_val != max_val:
                 st.dataframe(filtered_rows_ftd)
             else:
                 st.info("No suspicious transactions found for First Two Digit.")
+
 
