@@ -119,10 +119,9 @@ if uploaded_file:
             observed_fd = [actual_counts_fd.get(d, 0) for d in range(1, 10)]
             expected_fd = [benford_dist_fd[d] * total_fd for d in range(1, 10)]
             
-scale_fd = sum(observed_fd) / sum(expected_fd)
-expected_fd_scaled = [x * scale_fd for x in expected_fd]
-chi2_fd, p_fd = chisquare(f_obs=observed_fd, f_exp=expected_fd_scaled)
-
+            scale_fd = sum(observed_fd) / sum(expected_fd)
+            expected_fd_scaled = [x * scale_fd for x in expected_fd]
+            chi2_fd, p_fd = chisquare(f_obs=observed_fd, f_exp=expected_fd_scaled)
             t_fd, pval_fd = ttest_1samp([actual_dist_fd.get(d, 0)*100 for d in range(1, 10)],
                                         np.mean([benford_dist_fd[d]*100 for d in range(1, 10)]))
 
@@ -291,4 +290,5 @@ chi2_ftd, p_ftd = chisquare(f_obs=observed_ftd, f_exp=expected_ftd_scaled)
                 st.dataframe(filtered_rows_ftd)
             else:
                 st.info("No suspicious transactions found for First Two Digit.")
+
 
