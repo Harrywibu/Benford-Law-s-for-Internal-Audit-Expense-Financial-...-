@@ -189,7 +189,7 @@ if uploaded_file:
             else:
                 st.info("No suspicious transactions found for First Digit.")    
             if min_val != max_val:
-                value_range = st.slider("Filter suspicious value range", float(min_val), float(max_val), (float(min_val), float(max_val)), key="slider_fd")
+                value_range = st.slider("Filter suspicious value range", float(min_val), float(max_val), (float(min_val), float(max_val)), key="slider_fd1")
                 filtered_rows_fd = suspicious_rows_fd[(suspicious_rows_fd[selected_col] >= value_range[0]) & (suspicious_rows_fd[selected_col] <= value_range[1])]
                 st.dataframe(filtered_rows_fd)
             else:
@@ -293,7 +293,7 @@ if uploaded_file:
             else:
                 st.info("No suspicious transactions found for First Two Digit.")
             if min_val != max_val:
-                value_range = st.slider("Filter suspicious value range", float(min_val), float(max_val), (float(min_val), float(max_val)), key="slider_fd")
+                value_range = st.slider("Filter suspicious value range", float(min_val), float(max_val), (float(min_val), float(max_val)), key="slider_fd2")
                 filtered_rows_fd = suspicious_rows_fd[(suspicious_rows_fd[selected_col] >= value_range[0]) & (suspicious_rows_fd[selected_col] <= value_range[1])]
                 st.dataframe(filtered_rows_fd)
             else:
@@ -301,6 +301,7 @@ if uploaded_file:
                 st.dataframe(suspicious_rows_fd)
                 filtered_rows_fd = suspicious_rows_fd[(suspicious_rows_fd[selected_col] >= value_range[0]) & (suspicious_rows_fd[selected_col] <= value_range[1])]
                 st.dataframe(filtered_rows_fd) 
+
 
 
 
