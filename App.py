@@ -1,4 +1,4 @@
-import streamlit as st
+=import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -118,7 +118,11 @@ if uploaded_file:
 
             observed_fd = [actual_counts_fd.get(d, 0) for d in range(1, 10)]
             expected_fd = [benford_dist_fd[d] * total_fd for d in range(1, 10)]
-            chi2_fd, p_fd = chisquare(f_obs=observed_fd, f_exp=expected_fd)
+            
+scale_fd = sum(observed_fd) / sum(expected_fd)
+expected_fd_scaled = [x * scale_fd for x in expected_fd]
+chi2_fd, p_fd = chisquare(f_obs=observed_fd, f_exp=expected_fd_scaled)
+
             t_fd, pval_fd = ttest_1samp([actual_dist_fd.get(d, 0)*100 for d in range(1, 10)],
                                         np.mean([benford_dist_fd[d]*100 for d in range(1, 10)]))
 
@@ -208,7 +212,11 @@ if uploaded_file:
 
             observed_ftd = [actual_counts_ftd.get(d, 0) for d in range(10, 100)]
             expected_ftd = [benford_dist_ftd[d] * total_ftd for d in range(10, 100)]
-            chi2_ftd, p_ftd = chisquare(f_obs=observed_ftd, f_exp=expected_ftd)
+            
+scale_ftd = sum(observed_ftd) / sum(expected_ftd)
+expected_ftd_scaled = [x * scale_ftd for x in expected_ftd]
+chi2_ftd, p_ftd = chisquare(f_obs=observed_ftd, f_exp=expected_ftd_scaled)
+
             t_ftd, pval_ftd = ttest_1samp([actual_dist_ftd.get(d, 0)*100 for d in range(10, 100)],
                                           np.mean([benford_dist_ftd[d]*100 for d in range(10, 100)]))
 
