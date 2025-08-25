@@ -196,9 +196,7 @@ if uploaded_file:
                 st.info("Suspicious value range is a single value. No slider needed.")
                 st.dataframe(suspicious_rows_fd)
                 filtered_rows_fd = suspicious_rows_fd[(suspicious_rows_fd[selected_col] >= value_range[0]) & (suspicious_rows_fd[selected_col] <= value_range[1])]
-                st.dataframe(filtered_rows_fd)
-            else:
-                st.info("No suspicious transactions found for First Digit.")
+                st.dataframe(filtered_rows_fd) 
                 
         # First Two Digit Column
         with col2:
@@ -294,6 +292,7 @@ if uploaded_file:
                 st.dataframe(filtered_rows_ftd)
             else:
                 st.info("No suspicious transactions found for First Two Digit.")
+
 
 
 
