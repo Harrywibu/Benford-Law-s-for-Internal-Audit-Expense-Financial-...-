@@ -183,8 +183,14 @@ if uploaded_file:
                 min_val = suspicious_rows_fd[selected_col].min()
                 max_val = suspicious_rows_fd[selected_col].max()
                 st.markdown(f"**Suspicious value range:** {min_val:,.2f} to {max_val:,.2f}")
-                
-if min_val != max_val:
+                value_range = st.slider("Filter suspicious value range", float(min_val), float(max_val), (float(min_val), float(max_val)),key="slider_fd")
+                filtered_rows_fd = suspicious_rows_fd[(suspicious_rows_fd[selected_col] >= value_range[0]) & (suspicious_rows_fd[selected_col] <= value_range[1])]
+                st.dataframe(filtered_rows_fd)
+            else:
+                st.info("No suspicious transactions found for First Digit.")
+
+    
+            if min_val != max_val:
     value_range = st.slider("Filter suspicious value range", float(min_val), float(max_val), (float(min_val), float(max_val)), key="slider_fd")
     filtered_rows_fd = suspicious_rows_fd[(suspicious_rows_fd[selected_col] >= value_range[0]) & (suspicious_rows_fd[selected_col] <= value_range[1])]
     st.dataframe(filtered_rows_fd)
@@ -196,7 +202,7 @@ else:
                 st.dataframe(filtered_rows_fd)
             else:
                 st.info("No suspicious transactions found for First Digit.")
-
+                
         # First Two Digit Column
         with col2:
             st.subheader("🔢 First Two Digit Analysis")
@@ -291,4 +297,3 @@ else:
                 st.dataframe(filtered_rows_ftd)
             else:
                 st.info("No suspicious transactions found for First Two Digit.")
-
