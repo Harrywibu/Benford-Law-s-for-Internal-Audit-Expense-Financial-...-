@@ -189,7 +189,7 @@ if uploaded_file:
             else:
                 st.info("No suspicious transactions found for First Digit.")
                 
-                if min_val != max_val:
+if min_val != max_val:
     value_range = st.slider(
         "Filter suspicious value range",
         float(min_val),
@@ -301,4 +301,5 @@ else:
                 st.dataframe(filtered_rows_ftd)
             else:
                 st.info("No suspicious transactions found for First Two Digit.")
+
 
