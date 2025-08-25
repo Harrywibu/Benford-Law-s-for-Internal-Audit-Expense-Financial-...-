@@ -1,4 +1,4 @@
-=import streamlit as st
+import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -291,4 +291,5 @@ chi2_ftd, p_ftd = chisquare(f_obs=observed_ftd, f_exp=expected_ftd_scaled)
                 st.dataframe(filtered_rows_ftd)
             else:
                 st.info("No suspicious transactions found for First Two Digit.")
+
 
